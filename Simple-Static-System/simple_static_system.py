@@ -50,14 +50,14 @@ while(n1 < n):
     measures = measurements[:n1] # To be replaced with actual measurments updated with every iteration
     true_list.append(true_value)
 
-    # Kalman Estimation Algorithm for Static System
+    # Estimation Algorithm for Static System
     kalman_gain = 1/n1
     state_estimate = predicted_state + kalman_gain*(measures[n1-1] - predicted_state)
     predicted_state = state_estimate
     state_list.append(state_estimate)
 
     # print("Measurements: ", measures)
-    # print("Kalman State Estimates: ", state_list)
+    # print("State Estimates: ", state_list)
     # print("True Values: ", true_list)
 
     n1+=1
@@ -68,7 +68,7 @@ f.set_figheight(7)
 
 plt.plot(num_list, measures, '-ro', label = 'Measurements')
 plt.plot(num_list, true_list, '-go', label = 'True Value')
-plt.plot(num_list, state_list, '-bo', label = 'Kalman Estimate')
+plt.plot(num_list, state_list, '-bo', label = 'Estimate')
 plt.xlabel('Number of Iterations (n)')
 plt.ylabel('Value')
 plt.legend(bbox_to_anchor=(0.77, 1.1), ncol=3)
